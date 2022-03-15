@@ -1,0 +1,21 @@
+<div class="example-container">
+  <h2>{{ todo.name }} ({{ todo.task.length }})</h2>
+
+  <div
+    cdkDropList
+    [cdkDropListData]="todo.task"
+    class="example-list"
+    (cdkDropListDropped)="drop($event)"
+  >
+    <div
+      class="example-box"
+      *ngFor="let item of todo.task; let i = index"
+      cdkDrag
+    >
+      {{ item.description }}
+      <div class="box">
+        <button class="btn btn-danger" (click)="deleteTask(i)">&times;</button>
+      </div>
+    </div>
+  </div>
+</div>

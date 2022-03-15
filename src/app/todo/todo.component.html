@@ -1,0 +1,31 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-3 height bg-dark pt-5">
+      <form [formGroup]="todoForm">
+        <label for="taskname" class="text-light mb-2">Task Name:</label>
+        <input
+          type="text"
+          id="taskname"
+          class="form-control"
+          placeholder="Task Name"
+          formControlName="item"
+        />
+        <button
+          *ngIf="!isEditEnabled"
+          class="btn btn-success mt-2 col-12"
+          [disabled]="todoForm.invalid"
+          (click)="addTask()"
+        >
+          Add
+        </button>
+      </form>
+    </div>
+    <div cdkDropListGroup role="todo" class="col-md-9">
+      <div class="row">
+        <ng-container *ngFor="let todo of todos">
+          <app-card class="col-md-4" [todo]="todo"></app-card>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</div>
